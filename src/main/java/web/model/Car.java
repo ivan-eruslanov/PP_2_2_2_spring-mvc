@@ -27,6 +27,22 @@ public class Car {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof Car other) {
+            return other.cost.equals(cost)
+                    && other.model.equals(model)
+                    && other.series == series;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return (model.hashCode() * 13 + cost.hashCode() * 37 + series) >>> 5;
+    }
+
+    @Override
     public String toString() {
         return "Car{" +
                 "model='" + model + '\'' +
